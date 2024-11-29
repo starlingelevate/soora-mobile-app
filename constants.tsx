@@ -4,6 +4,7 @@ const Constants = {
   ROUTES: {
     INTRO: 'Intro',
     SPLASH: 'Splash',
+    AUTH_SELECTOR: 'AuthSelector',
     SIGNUP: 'Signup',
     SIGNIN: 'Signin',
     ROOT: 'Root',
