@@ -11,6 +11,8 @@ const Constants = {
     ROOT_HOME: 'Home',
     LOGOUT: 'Logout',
     FORGOT_PASSWORD: 'ForgetPassword',
+    VERIFY: 'Verify',
+    CREATE_PROFILE: 'CreateProfile',
   },
 };
 

@@ -19,11 +19,15 @@ import Constants from './constants';
 import Signup from './src/screens/auth/signup';
 import Login from './src/screens/auth/login';
 import Logout from './src/screens/auth/logout';
+import AuthSelector from './src/screens/auth';
+import Verification from './src/screens/auth/verification';
+import CreateProfile from './src/screens/auth/createProfile';
+
 
 import {QueryClient, QueryClientProvider} from '@tanstack/react-query';
 import RootNavigation from './src/screens/root';
 import {Colors} from './src/styles/colors';
-import AuthSelector from './src/screens/auth';
+
 
 const Stack = createNativeStackNavigator();
 
@@ -92,6 +96,16 @@ const App = (): React.JSX.Element => {
             <Stack.Screen
               name={Constants.ROUTES.LOGOUT}
               component={Logout}
+              options={{headerShown: false}}
+            />
+            <Stack.Screen
+              name={Constants.ROUTES.VERIFY}
+              component={Verification}
+              options={{headerShown: false}}
+            />
+            <Stack.Screen
+              name={Constants.ROUTES.CREATE_PROFILE}
+              component={CreateProfile}
               options={{headerShown: false}}
             />
           </Stack.Navigator>

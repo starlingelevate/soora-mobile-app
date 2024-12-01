@@ -60,9 +60,9 @@ const Login: React.FC<LoginProps> = ({navigation}) => {
 
           <View style={styles.form}>
             <View style={styles.formGroup}>
-              <MyTextInput label="Email" left="email-variant" />
+              <MyTextInput label="E-mail ID" left="email-variant" />
               <MyTextInput
-                label="Password"
+                label="Enter Password"
                 left="key-variant"
                 type="password"
               />
