@@ -41,7 +41,7 @@ const AuthSelector = ({navigation}: {navigation: any}) => {
                 label="Login"
                 onPress={() => navigation.navigate(Constants.ROUTES.SIGNIN)}
               />
-              <MyButton mode="text" label="Need help?" />
+              <MyButton mode="textInvert" label="Need help?" />
             </View>
           </View>
         </View>

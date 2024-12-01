@@ -10,7 +10,6 @@ import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {
   MD3LightTheme as DefaultTheme,
   PaperProvider,
-  Text,
 } from 'react-native-paper';
 
 import SplashScreen from './src/screens/splash';
@@ -23,25 +22,33 @@ import Logout from './src/screens/auth/logout';
 
 import {QueryClient, QueryClientProvider} from '@tanstack/react-query';
 import RootNavigation from './src/screens/root';
-import { Colors } from './src/styles/colors';
+import {Colors} from './src/styles/colors';
 import AuthSelector from './src/screens/auth';
 
 const Stack = createNativeStackNavigator();
 
-const BOLD = ['display', 'headline', 'labelLarge'];
-const REGULAR = ['title', 'label', 'body', 'default'];
+const REGULAR = ['body', 'default'];
+const SEMI_BOLD = ['title', 'label', 'display'];
+const BOLD = ['headline', 'labelLarge'];
 
 const theme = {
   ...DefaultTheme,
   colors: Colors.light,
-  fonts: Object.fromEntries(Object.entries(DefaultTheme.fonts).map(([variantName, variantProps])=>[
-    variantName,
-    {
-      ...variantProps,
-      fontFamily:  BOLD.find(f => variantName.toLowerCase().includes(f)) ? 'Poppins-Bold' : REGULAR.find(f => variantName.toLowerCase().includes(f)) ? 'Poppins-Regular' : 'Poppins-Light',
-    },
-  ]
-  )),
+  fonts: Object.fromEntries(
+    Object.entries(DefaultTheme.fonts).map(([variantName, variantProps]) => [
+      variantName,
+      {
+        ...variantProps,
+        fontFamily: BOLD.find(f => variantName.toLowerCase().includes(f))
+          ? 'Poppins-Bold'
+          : SEMI_BOLD.find(f => variantName.toLowerCase().includes(f))
+          ? 'Poppins-SemiBold'
+          : REGULAR.find(f => variantName.toLowerCase().includes(f))
+          ? 'Poppins-Regular'
+          : 'Poppins-Light',
+      },
+    ]),
+  ),
 };
 
 const queryClient = new QueryClient();
@@ -51,7 +58,7 @@ const App = (): React.JSX.Element => {
     <QueryClientProvider client={queryClient}>
       <NavigationContainer>
         <PaperProvider theme={theme}>
-          <Stack.Navigator initialRouteName={Constants.ROUTES.AUTH_SELECTOR}>
+          <Stack.Navigator initialRouteName={Constants.ROUTES.SIGNUP}>
             <Stack.Screen
               name={Constants.ROUTES.SPLASH}
               component={SplashScreen}
