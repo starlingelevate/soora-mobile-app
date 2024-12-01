@@ -17,7 +17,7 @@ import SplashScreen from './src/screens/splash';
 import IntroSlider from './src/screens/intro';
 import Constants from './constants';
 import Signup from './src/screens/auth/signup';
-import SignIn from './src/screens/auth/signin';
+import Login from './src/screens/auth/login';
 import Logout from './src/screens/auth/logout';
 
 import {QueryClient, QueryClientProvider} from '@tanstack/react-query';
@@ -58,7 +58,7 @@ const App = (): React.JSX.Element => {
     <QueryClientProvider client={queryClient}>
       <NavigationContainer>
         <PaperProvider theme={theme}>
-          <Stack.Navigator initialRouteName={Constants.ROUTES.SIGNUP}>
+          <Stack.Navigator initialRouteName={Constants.ROUTES.AUTH_SELECTOR}>
             <Stack.Screen
               name={Constants.ROUTES.SPLASH}
               component={SplashScreen}
@@ -86,7 +86,7 @@ const App = (): React.JSX.Element => {
             />
             <Stack.Screen
               name={Constants.ROUTES.SIGNIN}
-              component={SignIn}
+              component={Login}
               options={{headerShown: false}}
             />
             <Stack.Screen

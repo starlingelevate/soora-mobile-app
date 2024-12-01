@@ -10,6 +10,7 @@ const Constants = {
     ROOT: 'Root',
     ROOT_HOME: 'Home',
     LOGOUT: 'Logout',
+    FORGOT_PASSWORD: 'ForgetPassword',
   },
 };
 
