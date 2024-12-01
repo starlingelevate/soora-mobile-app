@@ -1,49 +1,62 @@
-import {SafeAreaView, View} from 'react-native';
-import globalStyle from '../../styles/global';
 import React from 'react';
-import {Button, Text, TextInput, useTheme} from 'react-native-paper';
+import {Button, Text, useTheme} from 'react-native-paper';
+import globalStyle from '../../styles/global';
 
-const MyButton = ({label, mode, onPress, ...rest}: any) => {
+type MyButtonProps = {
+  children?: React.ReactNode;
+  label?: string;
+  mode: 'contained' | 'containedInvert' | 'text' | 'textInvert' | 'outlined';
+  onPress: () => void;
+  [key: string]: any; // To allow additional props like `disabled`, `loading`, etc.
+};
+
+const MyButton: React.FC<MyButtonProps> = ({children, label, mode, onPress, ...rest}) => {
   const theme = useTheme();
 
-  return mode === 'contained' ? (
+  const getButtonStyle = () => {
+    switch (mode) {
+      case 'contained':
+        return {
+          buttonStyle: globalStyle.myButtonContained,
+          textStyle: {fontSize: 18, color: theme.colors.white},
+          buttonColor: theme.colors.primary,
+        };
+      case 'containedInvert':
+        return {
+          buttonStyle: globalStyle.myButtonContainedInvert,
+          textStyle: {fontSize: 18, color: theme.colors.primary},
+          buttonColor: theme.colors.white,
+        };
+      case 'text':
+        return {
+          buttonStyle: {marginVertical: 10},
+          textStyle: {textDecorationLine: 'underline', color: theme.colors.primary},
+        };
+      case 'textInvert':
+        return {
+          buttonStyle: {marginVertical: 10},
+          textStyle: {textDecorationLine: 'underline', color: theme.colors.platinumGrey},
+        };
+      case 'outlined':
+      default:
+        return {
+          buttonStyle: globalStyle.myButtonOutlined,
+          textStyle: {fontSize: 18, color: theme.colors.white},
+        };
+    }
+  };
+
+  const {buttonStyle, textStyle, buttonColor} = getButtonStyle();
+
+  return (
     <Button
-      style={globalStyle.myButtonContained}
-      mode={mode}
-      onPress={() => onPress()}
-      buttonColor={theme.colors.primary}
-      {...rest}>
-      <Text style={{fontSize: 18}}>
-        {label}
-      </Text>
-    </Button>
-  ) : mode === 'containedInvert' ? (
-    <Button
-      style={globalStyle.myButtonContainedInvert}
-      mode={'contained'}
-      onPress={() => onPress()}
-      buttonColor={theme.colors.white}
-      textColor={theme.colors.primary}
-      {...rest}>
-      <Text style={{fontSize: 18}}>
-        {label}
-      </Text>
-    </Button>
-  ) : mode === 'text' ? (
-    <Button mode="text" style={{marginVertical: 10}}>
-      <Text style={{textDecorationLine: 'underline', color: theme.colors.platinumGrey}}>
-        {label}
-      </Text>
-    </Button>
-  ) : (
-    <Button
-      style={globalStyle.myButtonOutlined}
-      mode={'outlined'}
-      onPress={() => onPress()}
-      {...rest}>
-      <Text style={{fontSize: 18, color: theme.colors.white}}>
-        {label}
-      </Text>
+      style={buttonStyle}
+      mode={mode === 'containedInvert' ? 'contained' : mode} // Adjust mode for 'containedInvert'
+      onPress={onPress}
+      buttonColor={buttonColor}
+      {...rest}
+    >
+      <Text style={textStyle}>{children || label}</Text>
     </Button>
   );
 };

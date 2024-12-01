@@ -38,10 +38,13 @@ const globalStyle = StyleSheet.create({
       fontSize: 18,
     },
     myButtonContained: {
+      paddingVertical: 10,
       marginVertical: 10,
+      width: '100%',
+      borderRadius: 8,
     },
     myButtonOutlined: {
-      paddingVertical: 13,
+      paddingVertical: 10,
       marginVertical: 10,
       borderColor: '#fff',
       borderWidth: 1,
@@ -50,7 +53,7 @@ const globalStyle = StyleSheet.create({
       borderRadius: 8,
     },
     myButtonContainedInvert: {
-      paddingVertical: 13,
+      paddingVertical: 10,
       marginVertical: 10,
       width: '100%',
       borderRadius: 8,
