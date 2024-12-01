@@ -15,7 +15,7 @@ const MyTextInput = ({ label, helpText, errorText, left, type, ...rest }: any) =
         {...rest}
         mode="outlined"
         textColor={theme.colors.primary}
-        style={[styles.textInput, { borderRadius: 8 }]}
+        style={[styles.textInput]}
         left={<TextInput.Icon icon={left} color={theme.colors.primary} />}
       />
       {helpText && !errorText && (
@@ -50,7 +50,7 @@ const MyTextInput = ({ label, helpText, errorText, left, type, ...rest }: any) =
         {...rest}
         mode="outlined"
         textColor={theme.colors.primary}
-        style={[styles.textInput, { borderRadius: 8 }]}
+        style={[styles.textInput]}
       />
       {helpText && !errorText && (
         <View style={styles.helpTextContainer}>
@@ -81,6 +81,7 @@ const MyTextInput = ({ label, helpText, errorText, left, type, ...rest }: any) =
 const styles = StyleSheet.create({
   textInput: {
     // Shared input styles
+    borderRadius: 8
   },
   helpTextContainer: {
     flexDirection: 'row',
